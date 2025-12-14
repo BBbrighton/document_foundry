@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "creation": "2025-12-14 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled_doctypes_section",
+  "enabled_doctypes"
+ ],
+ "fields": [
+  {
+   "fieldname": "enabled_doctypes_section",
+   "fieldtype": "Section Break",
+   "label": "Enabled Document Types"
+  },
+  {
+   "fieldname": "enabled_doctypes",
+   "fieldtype": "Table",
+   "label": "Enabled DocTypes",
+   "options": "Document Share DocType"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-12-14 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Foundry",
+ "name": "Document Share Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

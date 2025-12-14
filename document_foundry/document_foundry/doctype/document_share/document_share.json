@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2025-12-14 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "reference_section",
+  "reference_doctype",
+  "reference_name",
+  "column_break_ref",
+  "share_token",
+  "share_url",
+  "is_active",
+  "access_section",
+  "access_type",
+  "password",
+  "column_break_access",
+  "expires_at",
+  "print_section",
+  "print_format",
+  "column_break_print",
+  "letterhead",
+  "tracking_section",
+  "view_count",
+  "last_viewed",
+  "column_break_tracking",
+  "created_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Document Reference"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reference DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reference Name",
+   "options": "reference_doctype",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ref",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "share_token",
+   "fieldtype": "Data",
+   "label": "Share Token",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "share_url",
+   "fieldtype": "Data",
+   "label": "Share URL",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "access_section",
+   "fieldtype": "Section Break",
+   "label": "Access Control"
+  },
+  {
+   "default": "Public",
+   "fieldname": "access_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Access Type",
+   "options": "Public\nPassword\nLogin Required",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.access_type=='Password'",
+   "fieldname": "password",
+   "fieldtype": "Data",
+   "label": "Password"
+  },
+  {
+   "fieldname": "column_break_access",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expires_at",
+   "fieldtype": "Datetime",
+   "label": "Expires At"
+  },
+  {
+   "fieldname": "print_section",
+   "fieldtype": "Section Break",
+   "label": "Print Settings"
+  },
+  {
+   "fieldname": "print_format",
+   "fieldtype": "Link",
+   "label": "Print Format",
+   "options": "Print Format"
+  },
+  {
+   "fieldname": "column_break_print",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "letterhead",
+   "fieldtype": "Link",
+   "label": "Letterhead",
+   "options": "Letter Head"
+  },
+  {
+   "fieldname": "tracking_section",
+   "fieldtype": "Section Break",
+   "label": "Tracking"
+  },
+  {
+   "default": "0",
+   "fieldname": "view_count",
+   "fieldtype": "Int",
+   "label": "View Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_viewed",
+   "fieldtype": "Datetime",
+   "label": "Last Viewed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tracking",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-14 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Foundry",
+ "name": "Document Share",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "reference_name",
+ "track_changes": 1
+}

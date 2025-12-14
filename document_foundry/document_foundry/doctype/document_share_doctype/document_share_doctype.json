@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "creation": "2025-12-14 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document_type",
+  "default_print_format",
+  "column_break_1",
+  "default_expiry_days",
+  "section_break_access",
+  "allow_public",
+  "allow_password",
+  "allow_login",
+  "section_break_roles",
+  "allowed_roles"
+ ],
+ "fields": [
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_print_format",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default Print Format",
+   "options": "Print Format"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "0 = Never expires",
+   "fieldname": "default_expiry_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Default Expiry (Days)"
+  },
+  {
+   "fieldname": "section_break_access",
+   "fieldtype": "Section Break",
+   "label": "Allowed Access Types"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_public",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Allow Public"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_password",
+   "fieldtype": "Check",
+   "label": "Allow Password Protected"
+  },
+  {
+   "default": "1",
+   "fieldname": "allow_login",
+   "fieldtype": "Check",
+   "label": "Allow Login Required"
+  },
+  {
+   "fieldname": "section_break_roles",
+   "fieldtype": "Section Break",
+   "label": "Permissions"
+  },
+  {
+   "description": "Roles that can create share links for this DocType",
+   "fieldname": "allowed_roles",
+   "fieldtype": "Table MultiSelect",
+   "label": "Allowed Roles",
+   "options": "Has Role"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-14 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Document Foundry",
+ "name": "Document Share DocType",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
