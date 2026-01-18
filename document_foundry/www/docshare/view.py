@@ -66,17 +66,21 @@ def get_context(context):
 	context.show_password_form = False
 	context.error = None
 
-	# Record view
-	doc = frappe.get_doc("Document Share", share.name)
-	doc.record_view()
+	# Record view - use flags to bypass permission check for this specific operation
+	frappe.flags.ignore_permissions = True
+	try:
+		doc = frappe.get_doc("Document Share", share.name)
+		doc.record_view()
 
-	# Get document HTML
-	context.document_html = frappe.get_print(
-		share.reference_doctype,
-		share.reference_name,
-		print_format=share.print_format,
-		letterhead=share.letterhead
-	)
+		# Get document HTML
+		context.document_html = frappe.get_print(
+			share.reference_doctype,
+			share.reference_name,
+			print_format=share.print_format,
+			letterhead=share.letterhead
+		)
+	finally:
+		frappe.flags.ignore_permissions = False
 
 	context.doctype = share.reference_doctype
 	context.docname = share.reference_name
