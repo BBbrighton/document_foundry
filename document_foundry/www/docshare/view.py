@@ -89,4 +89,5 @@ def get_context(context):
 	context.doctype = share.reference_doctype
 	context.docname = share.reference_name
 	context.token = token
+	context.password = frappe.form_dict.get("password") or ""
 	context.title = f"{share.reference_doctype}: {share.reference_name}"

@@ -332,7 +332,7 @@
 						// Check if it's a PDF download link
 						if (href.includes('download_pdf') || onclick.includes('download_pdf') ||
 						    link.textContent.toLowerCase().includes('pdf')) {
-							link.setAttribute('href', '/api/method/document_foundry.document_foundry.api.docshare.get_document_pdf?token={{ token }}');
+							link.setAttribute('href', '/api/method/document_foundry.document_foundry.api.docshare.get_document_pdf?token={{ token }}{% if password %}&password={{ password | urlencode }}{% endif %}');
 							link.removeAttribute('onclick');
 							link.setAttribute('target', '_self');
 						}
