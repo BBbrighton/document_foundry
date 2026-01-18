@@ -264,13 +264,19 @@ def get_document_pdf(token, password=None):
 	share = frappe.get_doc("Document Share", {"share_token": token})
 	share.record_view()
 
-	# Get HTML first
-	html = frappe.get_print(
-		access["doctype"],
-		access["docname"],
-		print_format=access.get("print_format"),
-		letterhead=access.get("letterhead")
-	)
+	# Get HTML - bypass permission checks since we validated the share token
+	frappe.flags.ignore_permissions = True
+	frappe.flags.ignore_print_permissions = True
+	try:
+		html = frappe.get_print(
+			access["doctype"],
+			access["docname"],
+			print_format=access.get("print_format"),
+			letterhead=access.get("letterhead")
+		)
+	finally:
+		frappe.flags.ignore_permissions = False
+		frappe.flags.ignore_print_permissions = False
 
 	# Add Thai font embedded as base64 for PDF rendering
 	# This ensures Thai text renders correctly without requiring system font installation

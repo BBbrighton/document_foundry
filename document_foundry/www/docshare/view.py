@@ -66,13 +66,16 @@ def get_context(context):
 	context.show_password_form = False
 	context.error = None
 
-	# Record view - use flags to bypass permission check for this specific operation
-	frappe.flags.ignore_permissions = True
-	try:
-		doc = frappe.get_doc("Document Share", share.name)
-		doc.record_view()
+	# Record view
+	share_doc = frappe.get_doc("Document Share", share.name)
+	share_doc.record_view()
 
-		# Get document HTML
+	# Get document HTML - bypass permission checks since we validated the share token
+	# Set flags to allow document access and print without permission checks
+	frappe.flags.ignore_permissions = True
+	frappe.flags.ignore_print_permissions = True
+	try:
+		# Use frappe.get_print which returns full HTML including Print/PDF toolbar
 		context.document_html = frappe.get_print(
 			share.reference_doctype,
 			share.reference_name,
@@ -81,6 +84,7 @@ def get_context(context):
 		)
 	finally:
 		frappe.flags.ignore_permissions = False
+		frappe.flags.ignore_print_permissions = False
 
 	context.doctype = share.reference_doctype
 	context.docname = share.reference_name
