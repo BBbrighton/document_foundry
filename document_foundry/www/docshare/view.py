@@ -6,6 +6,7 @@ from frappe import _
 from frappe.utils import now_datetime
 
 no_cache = 1
+allow_guest = True
 
 
 def get_context(context):
